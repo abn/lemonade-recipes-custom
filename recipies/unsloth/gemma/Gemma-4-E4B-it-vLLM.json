@@ -1,0 +1,15 @@
+{
+    "checkpoint": "google/gemma-4-E4B-it",
+    "model_name": "user.Gemma-4-E4B-it-vLLM",
+    "labels": [
+        "vision",
+        "tool-calling",
+        "mtp"
+    ],
+    "recipe": "vllm",
+    "recipe_options": {
+        "ctx_size": 8192,
+        "vllm_args": "--speculative-config '{\"method\":\"mtp\",\"model\":\"google/gemma-4-E4B-it-assistant\",\"num_speculative_tokens\":1}'",
+        "vllm_backend": "rocm"
+    }
+}
