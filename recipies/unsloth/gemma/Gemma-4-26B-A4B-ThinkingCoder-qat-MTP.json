@@ -16,7 +16,7 @@
     "recipe_options": {
         "ctx_size": 262144,
         "llamacpp_backend": "vulkan",
-        "llamacpp_args": "--temp 0.7 --top-p 0.95 --min-p 0.05 --flash-attn --cache-type-k q4_0 --cache-type-v q4_0 --spec-draft-n-max 2 --model-draft mtp-gemma-4-26B-A4B-it.gguf --reasoning on"
+        "llamacpp_args": "--temp 0.7 --top-p 0.95 --min-p 0.05 --flash-attn on --cache-type-k q4_0 --cache-type-v q4_0 --spec-draft-n-max 2 --model-draft mtp-gemma-4-26B-A4B-it.gguf --reasoning on"
     },
     "size": 18.1
 }
