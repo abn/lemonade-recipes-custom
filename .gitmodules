@@ -1,0 +1,3 @@
+[submodule "recipes/lemonade"]
+	path = recipes/lemonade
+	url = https://github.com/lemonade-sdk/recipes
