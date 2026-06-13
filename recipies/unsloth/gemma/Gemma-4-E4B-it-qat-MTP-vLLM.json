@@ -1,6 +1,6 @@
 {
     "checkpoint": "unsloth/gemma-4-E4B-it-qat-w4a16",
-    "model_name": "user.Gemma-4-E4B-it-qat-vLLM",
+    "model_name": "user.Gemma-4-E4B-it-qat-MTP-vLLM",
     "labels": [
         "vision",
         "tool-calling",
