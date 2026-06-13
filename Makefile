@@ -1,3 +1,6 @@
+LEMONADE ?= lemonade
+export LEMONADE
+
 .DEFAULT_GOAL := help
 
 .PHONY: list help FORCE
@@ -12,11 +15,11 @@ recipies/%: FORCE ## Import a custom recipe (e.g., recipies/unsloth/gemma/Gemma-
 		unsloth/gemma/*-MTP.json) \
 			./recipies/unsloth/gemma/import-mtp.sh "$@" ;; \
 		*) \
-			lemonade import "$@" ;; \
+			$(LEMONADE) import "$@" ;; \
 	esac
 
 recipes/%: FORCE ## Import a standard recipe (e.g., recipes/lemonade/coding-agents/GLM-4.7-Flash-GGUF-NoThinking.json)
-	lemonade import "$@"
+	$(LEMONADE) import "$@"
 
 ##@ Utilities
 

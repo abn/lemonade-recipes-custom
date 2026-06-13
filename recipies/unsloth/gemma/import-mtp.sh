@@ -13,7 +13,7 @@ mapfile -t ARGS < <(jq -r '.model_name, (.checkpoints.mtp | split(":")[-1])' "$R
 MODEL_ID="${ARGS[0]}"
 MTP_DRAFT="${ARGS[1]}"
 
-lemonade import ${RECIPE}
+"${LEMONADE:-lemonade}" import ${RECIPE}
 
 MTP_DRAFT_PATH=$(find ~/.cache/huggingface/hub/ -type f -name "$MTP_DRAFT" -print -quit)
 
