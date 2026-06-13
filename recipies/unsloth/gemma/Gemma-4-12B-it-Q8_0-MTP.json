@@ -12,8 +12,8 @@
     ],
     "recipe": "llamacpp",
     "recipe_options": {
-        "ctx_size": 0,
-        "llamacpp_args": "--spec-draft-n-max 2 --model-draft mtp-gemma-4-12b-it.gguf",
+        "ctx_size": 262144,
+        "llamacpp_args": "--temp 0.7 --top-p 0.95 --min-p 0.05 --flash-attn --cache-type-k q4_0 --cache-type-v q4_0 --spec-draft-n-max 2 --model-draft mtp-gemma-4-12b-it.gguf --reasoning on",
         "llamacpp_backend": "vulkan"
     }
 }

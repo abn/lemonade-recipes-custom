@@ -13,8 +13,8 @@
     ],
     "recipe": "llamacpp",
     "recipe_options": {
-        "ctx_size": 0,
-        "llamacpp_args": "--temp 1 --top-p 0.95 --top-k 64 -b 4096 -ub 1024 --chat-template-kwargs '{\"enable_thinking\": false}' --spec-draft-n-max 2 --model-draft mtp-gemma-4-26B-A4B-it.gguf",
+        "ctx_size": 262144,
+        "llamacpp_args": "--temp 0.1 --top-p 0.95 --top-k 64 -b 4096 -ub 1024 --flash-attn --cache-type-k q4_0 --cache-type-v q4_0 --spec-draft-n-max 2 --model-draft mtp-gemma-4-26B-A4B-it.gguf --reasoning off",
         "llamacpp_backend": "vulkan"
     }
 }
