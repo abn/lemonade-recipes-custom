@@ -1,0 +1,20 @@
+{
+    "checkpoints": {
+        "main": "unsloth/gemma-4-26B-A4B-it-GGUF:Q8_0",
+        "mmproj": "unsloth/gemma-4-26B-A4B-it-GGUF:mmproj-F16.gguf",
+        "mtp": "unsloth/gemma-4-26B-A4B-it-GGUF:mtp-gemma-4-26B-A4B-it.gguf"
+    },
+    "model_name": "user.Gemma-4-26B-A4B-NoThinking-Q8_0-MTP",
+    "labels": [
+        "vision",
+        "hot",
+        "tool-calling",
+        "mtp"
+    ],
+    "recipe": "llamacpp",
+    "recipe_options": {
+        "ctx_size": 0,
+        "llamacpp_args": "--temp 1 --top-p 0.95 --top-k 64 -b 4096 -ub 1024 --chat-template-kwargs '{\"enable_thinking\": false}' --spec-draft-n-max 2 --model-draft mtp-gemma-4-26B-A4B-it.gguf",
+        "llamacpp_backend": "vulkan"
+    }
+}
