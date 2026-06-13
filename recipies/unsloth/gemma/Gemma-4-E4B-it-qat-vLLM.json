@@ -1,0 +1,15 @@
+{
+    "checkpoint": "unsloth/gemma-4-E4B-it-qat-w4a16",
+    "model_name": "user.Gemma-4-E4B-it-qat-vLLM",
+    "labels": [
+        "vision",
+        "tool-calling",
+        "mtp"
+    ],
+    "recipe": "vllm",
+    "recipe_options": {
+        "ctx_size": 8192,
+        "vllm_args": "--speculative-config '{\"method\":\"mtp\",\"model\":\"google/gemma-4-E4B-it-qat-q4_0-unquantized-assistant\",\"num_speculative_tokens\":1}'",
+        "vllm_backend": "rocm"
+    }
+}
