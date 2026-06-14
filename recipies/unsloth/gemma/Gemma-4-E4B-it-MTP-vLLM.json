@@ -11,5 +11,6 @@
         "ctx_size": 8192,
         "vllm_args": "--speculative-config {\"method\":\"mtp\",\"model\":\"google/gemma-4-E4B-it-assistant\",\"num_speculative_tokens\":1}",
         "vllm_backend": "rocm"
-    }
+    },
+    "size": 14.924
 }
