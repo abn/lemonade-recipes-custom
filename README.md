@@ -32,7 +32,12 @@ Speculative decoding reduces latency by using a smaller assistant or draft model
 * **Absolute Path Constraint (MTP):** Since `llama-server` executes in a separate process directory, it cannot resolve relative paths for speculative draft models (e.g., `--model-draft`). Therefore, our custom import workflow resolves the draft model GGUF path to an absolute path inside the Hugging Face cache.
 
 ### 3. Process & Environment Configuration
-By default, the `Makefile` and other scripts assume Lemonade is running as a user process and uses `$XDG_CACHE_DIR` (`~/.cache/`) for both the Hugging Face cache and the Lemonade cache.
+By default, the `Makefile` and other scripts assume Lemonade is running as a user process. They resolve the cache location using `$CACHE_HOME` (which is configurable, defaulting to `$XDG_CACHE_HOME` and falling back to `~/.cache/`) for locating both the Hugging Face cache and the Lemonade cache.
+
+You can override this directory when running `make` by passing it as a variable:
+```bash
+make recipes/unsloth/gemma/Gemma-4-E4B-it-qat-MTP.json CACHE_HOME=/path/to/custom/cache
+```
 
 For Flatpak server instances, this setup assumes the following filesystem overrides are configured in `~/.local/share/flatpak/overrides/ai.lemonade_server.Lemonade`:
 

@@ -11,12 +11,18 @@ def get_hf_cache_dir() -> pathlib.Path:
         return pathlib.Path(os.environ["HF_HUB_CACHE"])
     if "HF_HOME" in os.environ:
         return pathlib.Path(os.environ["HF_HOME"]) / "hub"
+    cache_home = os.environ.get("CACHE_HOME") or os.environ.get("XDG_CACHE_HOME")
+    if cache_home:
+        return pathlib.Path(cache_home) / "huggingface" / "hub"
     return pathlib.Path(os.path.expanduser("~/.cache/huggingface/hub"))
 
 
 def get_lemonade_cache_dir() -> pathlib.Path:
     if "LEMONADE_CACHE_DIR" in os.environ:
         return pathlib.Path(os.environ["LEMONADE_CACHE_DIR"])
+    cache_home = os.environ.get("CACHE_HOME") or os.environ.get("XDG_CACHE_HOME")
+    if cache_home:
+        return pathlib.Path(cache_home) / "lemonade"
     return pathlib.Path(os.path.expanduser("~/.cache/lemonade"))
 
 

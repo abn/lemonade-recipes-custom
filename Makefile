@@ -1,6 +1,13 @@
 LEMONADE ?= lemonade
 export LEMONADE
 
+ifdef XDG_CACHE_HOME
+  CACHE_HOME ?= $(XDG_CACHE_HOME)
+else
+  CACHE_HOME ?= $(HOME)/.cache
+endif
+export CACHE_HOME
+
 .DEFAULT_GOAL := help
 
 .PHONY: list help FORCE recipes/sizes lint

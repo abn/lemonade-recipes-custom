@@ -2,7 +2,7 @@
 
 set -xeuo pipefail
 
-CACHE_DIR=${HOME}/.cache
+CACHE_DIR="${CACHE_HOME:-${XDG_CACHE_HOME:-$HOME/.cache}}"
 LEMONADE_CACHE=${CACHE_DIR}/lemonade
 HF_MODEL_CACHE=${CACHE_DIR}/huggingface/hub
 
@@ -18,7 +18,7 @@ REPO_DIR="models--$(echo "${REPO_NAME}" | sed 's/\//--/g')"
 "${LEMONADE:-lemonade}" import "${RECIPE}"
 
 # 2. Find the downloaded MTP draft GGUF file in the specific repository's Hugging Face cache.
-MTP_DRAFT_PATH=$(find -L ~/.cache/huggingface/hub/"${REPO_DIR}"/ -type f -name "$MTP_DRAFT" -print -quit)
+MTP_DRAFT_PATH=$(find -L "${HF_MODEL_CACHE}"/"${REPO_DIR}"/ -type f -name "$MTP_DRAFT" -print -quit)
 
 if [ -n "$MTP_DRAFT_PATH" ]; then
     echo "Resolved MTP draft path: ${MTP_DRAFT_PATH}"
