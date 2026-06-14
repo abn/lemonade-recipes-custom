@@ -3,7 +3,7 @@ export LEMONADE
 
 .DEFAULT_GOAL := help
 
-.PHONY: list help FORCE recipes/sizes
+.PHONY: list help FORCE recipes/sizes lint
 
 ##@ Recipies & Recipes
 
@@ -25,6 +25,9 @@ recipes/sizes: ## Determine and update recipe sizes from local HF cache
 	@python3 ./update_recipe_sizes.py
 
 ##@ Utilities
+
+lint: ## Run linter and formatter checks using pre-commit
+	pre-commit run --all-files
 
 help: ## Show this help
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} \

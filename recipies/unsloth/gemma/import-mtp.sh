@@ -22,19 +22,18 @@ MTP_DRAFT_PATH=$(find -L ~/.cache/huggingface/hub/"${REPO_DIR}"/ -type f -name "
 
 if [ -n "$MTP_DRAFT_PATH" ]; then
     echo "Resolved MTP draft path: ${MTP_DRAFT_PATH}"
-    
+
     # 3. Create a temporary modified recipe JSON file.
     # We put the absolute path to the draft model directly in the recipe options.
     TEMP_RECIPE="${RECIPE}.tmp"
     trap 'rm -f "${TEMP_RECIPE}"' EXIT
-    
+
     jq --arg drf "--model-draft \"${MTP_DRAFT_PATH}\"" \
        '.recipe_options.llamacpp_args |= sub("--model-draft \\S+"; $drf)' \
        "${RECIPE}" > "${TEMP_RECIPE}"
-       
+
     # 4. Import the modified recipe to update the server's in-memory state and disk cache.
     "${LEMONADE:-lemonade}" import "${TEMP_RECIPE}"
 else
     echo "Warning: MTP draft file ${MTP_DRAFT} not found in HF cache. Skipping path resolution."
 fi
-
