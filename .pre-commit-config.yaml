@@ -1,4 +1,4 @@
-exclude: '^recipes/|\.svg$'
+exclude: '^recipes/lemonade/|\.svg$'
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0

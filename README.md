@@ -37,10 +37,11 @@ Speculative decoding reduces latency by using a smaller assistant or draft model
 
 * [Makefile](Makefile) — Entrypoint for developers to list, import, and manage recipes.
 * [update_recipe_sizes.py](update_recipe_sizes.py) — Reusable helper script to calculate real checkpoint sizes in GiB and sync them with recipe definitions and the server's cache.
-* `recipes/` — General/standard recipe definitions. Includes the [recipes/lemonade](recipes/lemonade) Git submodule containing default, unmodified upstream model definitions.
-  * [validate_recipe_json.py](recipes/lemonade/validate_recipe_json.py) — Strict validation script for recipe JSON files.
-* `recipies/` — Custom/experimental recipe configurations (e.g., Unsloth-based models or specialized coding agents).
-  * [import-mtp.sh](recipies/unsloth/gemma/import-mtp.sh) — Helper to auto-resolve relative MTP draft paths to absolute local Hugging Face cache paths.
+* `recipes/` — Recipe definitions:
+  * `recipes/lemonade/` — Git submodule containing default, unmodified upstream model definitions.
+    * [validate_recipe_json.py](recipes/lemonade/validate_recipe_json.py) — Strict validation script for recipe JSON files.
+  * `recipes/coding-agents/` and `recipes/unsloth/` — Custom/experimental recipe configurations (e.g., Unsloth-based models or specialized coding agents).
+    * [import-mtp.sh](recipes/unsloth/gemma/import-mtp.sh) — Helper to auto-resolve relative MTP draft paths to absolute local Hugging Face cache paths.
 
 ---
 
@@ -59,11 +60,11 @@ make recipes/lemonade/coding-agents/GLM-4.7-Flash-GGUF-NoThinking.json
 ```
 
 ### 3. Importing a Multi-Token Prediction (MTP) Speculative Recipe
-For experimental recipes in `recipies/unsloth/gemma/` that require resolving absolute draft paths:
+For experimental recipes in `recipes/unsloth/gemma/` that require resolving absolute draft paths:
 ```bash
-make recipies/unsloth/gemma/Gemma-4-E4B-it-qat-MTP.json
+make recipes/unsloth/gemma/Gemma-4-E4B-it-qat-MTP.json
 ```
-The Make target invokes [import-mtp.sh](recipies/unsloth/gemma/import-mtp.sh), which:
+The Make target invokes [import-mtp.sh](recipes/unsloth/gemma/import-mtp.sh), which:
 1. Registers the initial recipe via `lemonade import` (initiating model pulling).
 2. Searches the local Hugging Face hub cache (`~/.cache/huggingface/hub/`) for the downloaded MTP draft GGUF.
 3. Automatically overwrites the `--model-draft` argument inside `recipe_options.llamacpp_args` with the resolved absolute path.

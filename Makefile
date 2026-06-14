@@ -5,21 +5,18 @@ export LEMONADE
 
 .PHONY: list help FORCE recipes/sizes lint
 
-##@ Recipies & Recipes
+##@ Recipes
 
 list: ## List all available recipe options
-	@find recipies recipes -type f -name "*.json"
+	@find recipes -type f -name "*.json"
 
-recipies/%: FORCE ## Import a custom recipe (e.g., recipies/unsloth/gemma/Gemma-4-E4B-it-qat-MTP.json)
+recipes/%: FORCE ## Import a recipe (e.g., recipes/unsloth/gemma/Gemma-4-E4B-it-qat-MTP.json)
 	@case "$*" in \
 		unsloth/gemma/*-MTP.json) \
-			./recipies/unsloth/gemma/import-mtp.sh "$@" ;; \
+			./recipes/unsloth/gemma/import-mtp.sh "$@" ;; \
 		*) \
 			$(LEMONADE) import "$@" ;; \
 	esac
-
-recipes/%: FORCE ## Import a standard recipe (e.g., recipes/lemonade/coding-agents/GLM-4.7-Flash-GGUF-NoThinking.json)
-	$(LEMONADE) import "$@"
 
 recipes/sizes: ## Determine and update recipe sizes from local HF cache
 	@python3 ./update_recipe_sizes.py

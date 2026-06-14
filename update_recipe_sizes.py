@@ -198,7 +198,7 @@ def main():
 
     # Discover recipe directories inside the repository root
     repo_root = pathlib.Path(__file__).parent.resolve()
-    recipe_dirs = [repo_root / "recipes", repo_root / "recipies"]
+    recipe_dirs = [repo_root / "recipes"]
 
     recipe_files: List[pathlib.Path] = []
     for rdir in recipe_dirs:
