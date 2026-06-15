@@ -6,7 +6,8 @@
     "labels": [
         "vision",
         "hot",
-        "tool-calling"
+        "tool-calling",
+        "coding"
     ],
     "recipe": "llamacpp",
     "recipe_options": {

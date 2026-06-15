@@ -9,6 +9,7 @@
         "vision",
         "hot",
         "tool-calling",
+        "coding",
         "mtp"
     ],
     "recipe": "llamacpp",
