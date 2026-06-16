@@ -4,10 +4,12 @@
         "mmproj": "unsloth/gemma-4-12B-it-qat-GGUF:mmproj-F16.gguf",
         "mtp": "unsloth/gemma-4-12B-it-qat-GGUF:mtp-gemma-4-12B-it.gguf"
     },
-    "model_name": "user.Gemma-4-12B-it-qat-MTP",
+    "model_name": "user.Gemma-4-12B-ThinkingCoder-qat-MTP",
     "labels": [
         "vision",
+        "hot",
         "tool-calling",
+        "coding",
         "mtp"
     ],
     "recipe": "llamacpp",

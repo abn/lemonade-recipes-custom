@@ -58,7 +58,15 @@ filesystems=xdg-config/flm;xdg-cache/huggingface;xdg-cache/lemonade;xdg-config/l
   * `recipes/coding-agents/` and `recipes/unsloth/` — Custom/experimental recipe configurations (e.g., Unsloth-based models or specialized coding agents).
     * [import-mtp.sh](recipes/unsloth/gemma/import-mtp.sh) — Helper to auto-resolve relative MTP draft paths to absolute local Hugging Face cache paths.
 
+### Custom Model Recipes
+
+In addition to upstream recipes, this repository defines:
+* **Gemma-4 12B QAT + MTP Coding Variants** (in `recipes/unsloth/gemma/`):
+  * `Gemma-4-12B-NoThinking-qat-MTP.json` — Coding variant with reasoning disabled (`--reasoning off`, `--temp 0.1`).
+  * `Gemma-4-12B-ThinkingCoder-qat-MTP.json` — Coding variant with reasoning enabled (`--reasoning on`, `--temp 0.7`).
+
 ---
+
 
 ## Key Developer Workflows
 
