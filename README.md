@@ -64,6 +64,9 @@ In addition to upstream recipes, this repository defines:
 * **Gemma-4 12B QAT + MTP Coding Variants** (in `recipes/unsloth/gemma/`):
   * `Gemma-4-12B-NoThinking-qat-MTP.json` — Coding variant with reasoning disabled (`--reasoning off`, `--temp 0.1`).
   * `Gemma-4-12B-ThinkingCoder-qat-MTP.json` — Coding variant with reasoning enabled (`--reasoning on`, `--temp 0.7`).
+* **PleIAs Reasoning SLMs** (in `recipes/pleias/`):
+  * `Baguettotron-BF16.json` — 321M French reasoning model. Unquantized brain float 16-bit variant for maximum reasoning accuracy. Explicitly targets the GPU via Vulkan (`llamacpp_backend`: `vulkan`) with optimizations tailored for AMD Strix Halo (including `--flash-attn on`, `-b 4096 -ub 1024` batch sizes, Q8_0 KV cache type, and `--chat-template-kwargs '{"preserve_thinking": true}'` to preserve reasoning traces).
+  * `Monad-BF16.json` — 56M pocket-sized reasoning model. Unquantized brain float 16-bit variant to preserve logic and explainability on such a small scale. Runs on the GPU via Vulkan (`llamacpp_backend`: `vulkan`) with optimizations tailored for AMD Strix Halo (including `--flash-attn on`, `-b 4096 -ub 1024` batch sizes, Q8_0 KV cache type, and `--chat-template-kwargs '{"preserve_thinking": true}'`).
 
 ---
 

@@ -11,4 +11,3 @@ This file provides guidance for agent-driven tasks and code reviews when working
   python3 recipes/lemonade/validate_recipe_json.py <recipe_file.json>
   ```
 * **Do Not Modify Upstream Submodule:** Avoid making changes inside `recipes/lemonade/` (such as `recipes/lemonade/coding-agents/`) as it is an upstream submodule. Only modify recipe files outside of that directory (e.g., under `recipes/coding-agents/` and `recipes/unsloth/`).
-
