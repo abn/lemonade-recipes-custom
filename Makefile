@@ -15,7 +15,7 @@ export CACHE_HOME
 ##@ Recipes
 
 list: ## List all available recipe options
-	@find recipes -type f -name "*.json"
+	@find recipes -type f -name "*.json" | sort
 
 recipes/%: FORCE ## Import a recipe (e.g., recipes/unsloth/gemma/Gemma-4-E4B-it-qat-MTP.json)
 	@case "$*" in \
