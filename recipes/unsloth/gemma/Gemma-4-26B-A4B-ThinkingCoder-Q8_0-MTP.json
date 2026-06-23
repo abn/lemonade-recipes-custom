@@ -2,7 +2,7 @@
     "checkpoints": {
         "main": "unsloth/gemma-4-26B-A4B-it-GGUF:Q8_0",
         "mmproj": "unsloth/gemma-4-26B-A4B-it-GGUF:mmproj-F16.gguf",
-        "mtp": "unsloth/gemma-4-26B-A4B-it-GGUF:mtp-gemma-4-26B-A4B-it.gguf"
+        "draft": "unsloth/gemma-4-26B-A4B-it-GGUF:mtp-gemma-4-26B-A4B-it.gguf"
     },
     "model_name": "user.Gemma-4-26B-A4B-ThinkingCoder-Q8_0-MTP",
     "labels": [
@@ -16,7 +16,7 @@
     "recipe_options": {
         "ctx_size": 0,
         "llamacpp_backend": "vulkan",
-        "llamacpp_args": "--temp 0.7 --top-p 0.95 --top-k 64 --min-p 0.05 -b 4096 -ub 1024 --flash-attn on --cache-type-k q8_0 --cache-type-v q8_0 --spec-draft-n-max 2 --model-draft mtp-gemma-4-26B-A4B-it.gguf --reasoning on"
+        "llamacpp_args": "--temp 0.7 --top-p 0.95 --top-k 64 --min-p 0.05 -b 4096 -ub 1024 --flash-attn on --cache-type-k q8_0 --cache-type-v q8_0 --spec-draft-n-max 2 --reasoning on"
     },
     "size": 26.556
 }
