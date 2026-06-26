@@ -18,12 +18,7 @@ list: ## List all available recipe options
 	@find recipes -type f -name "*.json" | sort
 
 recipes/%: FORCE ## Import a recipe (e.g., recipes/unsloth/gemma/Gemma-4-E4B-it-qat-MTP.json)
-	@case "$*" in \
-		unsloth/gemma/*-MTP.json) \
-			./recipes/unsloth/gemma/import-mtp.sh "$@" ;; \
-		*) \
-			$(LEMONADE) import "$@" ;; \
-	esac
+	@$(LEMONADE) import "$@"
 
 recipes/sizes: ## Determine and update recipe sizes from local HF cache
 	@python3 ./update_recipe_sizes.py
